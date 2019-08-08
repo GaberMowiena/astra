@@ -3,7 +3,7 @@ import './App.css';
 import {CardComponent, Leftnav, TemplateResponse} from './Components'
 
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {title: 'Template List'};
@@ -42,3 +42,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App

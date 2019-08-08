@@ -1,7 +1,8 @@
 import React from "react";
 import "./style.css";
+import { connect } from 'react-redux';
 
-export default class CardComponent extends React.Component {
+class CardComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = Object.assign({}, props);
@@ -60,3 +61,4 @@ export default class CardComponent extends React.Component {
     );
   }
 }
+export default connect(null, {}, CardComponent)
