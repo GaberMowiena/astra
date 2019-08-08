@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {CardComponent, Leftnav} from './Components'
+import {CardComponent, Leftnav, TemplateResponse} from './Components'
 
 
 export default class App extends React.Component {
@@ -36,6 +36,7 @@ export default class App extends React.Component {
             }
             </section>
         </React.Fragment>
+          {this.state.templateData ?  (<React.Fragment><TemplateResponse /> </React.Fragment>) : ''}
         </div>
     </div>
     );

@@ -4,7 +4,7 @@ import "./style.css";
 export default class CardComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.props = props;
+    this.state = Object.assign({}, props);
     this.handleClick = this.handleClick.bind(this);
     this.handleDetail = this.handleDetail.bind(this);
   }
@@ -15,17 +15,23 @@ export default class CardComponent extends React.Component {
 
   handleDetail = () =>{
     //TODO pass templateID
-    const templateId = this.props.data.templateId
+    const templateId = this.state.data.templateId
 
-    fetch('/api/getOneTemplate/')
-    .then(data => this.setState({ templateData: data }))
-
+    fetch(`/api/templates/templatedetails?id=${templateId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(data => {
+      if (!data) return
+      this.setState({ templateData: data })})
   }
 
   render() {
     return (
-      <section key={this.props.data.templateName} className="card-container">
-        <div className="card-header">{this.props.data.templateName}</div>
+      <section key={this.state.data.templateName} className="card-container">
+        <div className="card-header">{this.state.data.templateName}</div>
         <div className="card-button">
           execute<span>...</span>
         </div>
